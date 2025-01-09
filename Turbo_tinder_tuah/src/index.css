@@ -1,68 +1,99 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
+/* General Reset */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 body {
-  margin: 0;
+  font-family: "Audiowide", sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Navbar */
+nav {
+  background: #ffa9a9;
+  height: 80px;
+  width: 100%;
   display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+label.logo {
+  padding: 45px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
+nav ul {
+  display: flex;
+  margin: 0;
+}
+
+nav ul li {
+  margin: 0 10px;
+}
+
+nav ul li a {
+  color: white;
+  font-size: 18px;
+  padding: 7px 13px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+
+a.active,
+a:hover {
+  background: #9d3232;
+  transition: 0.3s ease;
+}
+
+.checkbtn {
+  font-size: 22px;
+  color: white;
   cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  display: none;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+/* Responsive Navbar */
+#check {
+  display: none;
+}
+
+@media (max-width: 890px) {
+  .checkbtn {
+      display: block;
   }
-  a:hover {
-    color: #747bff;
+
+  nav ul {
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background: #9d3232;
+      top: 80px;
+      left: -100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
   }
-  button {
-    background-color: #f9f9f9;
+
+  nav ul li {
+      margin: 20px 0;
+  }
+
+  #check:checked ~ ul {
+      left: 0;
   }
 }
