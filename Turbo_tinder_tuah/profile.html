@@ -6,17 +6,60 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Audiowide|Sofia|Trirong" />
     <link rel="stylesheet" href="navbar.css">
+    <style>
+        /* Your existing CSS styles */
+    </style>
 </head>
 <body>
     <nav>
-        <label class="logo">Tinder Tuah Contacts</label>
+        <label class="logo">Tinder Tuah Profile</label>
         <ul>
+            <li><a class="active" href="#">Profile</a></li>
             <li><a href="/">Home</a></li>
             <li><a href="about.html">About</a></li>
             <li><a href="services.html">Services</a></li>
-            <li><a class="active" href="#">Contact</a></li>
+            <li><a href="contact.html">Contact</a></li>
             <li><a href="feedback.html">Feedback</a></li>
         </ul>
     </nav>
+
+    <!-- Profile Card Section -->
+    <div class="profile-card-container">
+        <div class="profile-card">
+            <h1>Otokar Sefer</h1>
+            <img src="src/assets/images/OurImages/BigOtokarSefer.png" alt="Otokar Sefer">
+            <p>Description: human human human human human human human human</p>
+        </div>
+    </div>
+
+    <!-- Liked Profiles Section -->
+    <div class="liked-profiles-container" id="likedProfilesContainer"></div>
+
+    <script>
+        // Fetch liked profiles from localStorage
+        const likedProfiles = JSON.parse(localStorage.getItem('likedProfiles')) || [];
+
+        // Function to render liked profiles
+        function renderLikedProfiles() {
+            const container = document.getElementById("likedProfilesContainer");
+            container.innerHTML = ''; // Clear existing content
+
+            likedProfiles.forEach(profile => {
+                const profileCard = document.createElement("div");
+                profileCard.className = "liked-profile-card";
+
+                profileCard.innerHTML = `
+                    <img src="${profile.image}" alt="${profile.name}" />
+                    <h3>${profile.name}</h3>
+                    <p>${profile.description}</p>
+                `;
+
+                container.appendChild(profileCard);
+            });
+        }
+
+        // Call the function to render liked profiles
+        renderLikedProfiles();
+    </script>
 </body>
 </html>

@@ -7,6 +7,7 @@
 
 body {
   font-family: "Audiowide", sans-serif;
+  background-color: #fdf5f5;
 }
 
 ul {
@@ -96,4 +97,12 @@ a:hover {
   #check:checked ~ ul {
       left: 0;
   }
+}
+
+footer {
+  text-align: center;
+  padding: 20px 0;
+  background-color: #ffa9a9;
+  color: #fff;
+  margin-top: auto;
 }

@@ -1,6 +1,8 @@
-import './App.css'
+import React, { useState } from "react";
+import Card from "./components/card/card.jsx";
+import "./App.css";
 
-// Suurem osa nimed on nii igavad
+// Lists
 const nameList = [
   "John", "Jane", "Sam", "Emily",
   "Alex", "Chris", "Katie", "Mark",
@@ -9,30 +11,18 @@ const nameList = [
   "Brown", "Taylor", "Thomas", "Jackson", 
   "White", "Fuckface", "Gaylord", "Harris",
   "Johnson"
-]
+];
 
-// Half AI brainrot
 const descriptionList = [
-  "lobotomized",
-  "Shows aggression towards women",
-  "A frequent member of the KKK",
-  "loves children",
-  "has children",
-  "gay and circumcised",
-  "doesn't love lesbians",
-  "I work in IT",
-  "I'm a gamer",
-  "not allowed near dogs or cats",
-  "not allowed near children",
-  "would you like to be a part of my secondary family",
-  "12 inches",
-  "grower, not a shower",
-  "shower, not a grower",
-  "i mildly racist",
-  "0.12 inches is my record...",
+  "lobotomized", "Shows aggression towards women", "A frequent member of the KKK",
+  "loves children", "has children", "gay and circumcised", "doesn't love lesbians",
+  "I work in IT", "I'm a gamer", "not allowed near dogs or cats", 
+  "not allowed near children", "would you like to be a part of my secondary family",
+  "12 inches", "grower, not a shower", "shower, not a grower", 
+  "i mildly racist", "0.12 inches is my record...", 
   "im the chapion of the gayeest competitoin: 'football'.",
   "I loved horses when i was little, now im scared of them",
-  "I collect toenail clippings for research",
+  "I collect toenail clippings for research", 
   "I believe the Earth is flat but only on weekends",
   "I screamed at a child for smiling at me",
   "I think toothpaste is a government conspiracy",
@@ -58,19 +48,33 @@ const descriptionList = [
   "I won’t talk to people unless they refer to me as 'Your Majesty'"
 ];
 
+const imagesList = [
+  "src/assets/images/men/man1.jpeg", "src/assets/images/men/man2.jpeg", 
+  "src/assets/images/men/man3.jpeg", "src/assets/images/men/man4.jpeg",
+  "src/assets/images/men/man5.jpeg", "src/assets/images/men/man6.png", 
+  "src/assets/images/men/man7.png", "src/assets/images/men/man8.png",
+  "src/assets/images/women/woman1.png", "src/assets/images/women/woman2.png", 
+  "src/assets/images/women/woman3.png", "src/assets/images/women/woman4.png",
+];
 
 function App() {
+  const [likedProfiles, setLikedProfiles] = useState([]);
+
+  const likeProfile = (profile) => {
+    setLikedProfiles((prevLikedProfiles) => [...prevLikedProfiles, profile]);
+  };
+
   return (
-    <Card
-    list={list} 
-    frontname={nameList} 
-    lastname={surnameList} 
-    personalTraitsList={descriptionsList} 
-    socialBehavioralList={socialBehavioralList} 
-    physicalBodyList={physicalBodyList} 
-    imagesList={imagesList}
-    />
+    <div>
+      <Card 
+        nameList={nameList}
+        descriptionList={descriptionList}
+        imagesList={imagesList}
+        likeProfile={likeProfile} // Pass likeProfile function to Card
+        likedProfiles={likedProfiles} // Pass likedProfiles to Card
+      />
+    </div>
   );
 }
 
-export default App
+export default App;
